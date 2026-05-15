@@ -1,0 +1,9 @@
+{
+  "name": "tedxkeiou-2026-setlog",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "vercel dev",
+    "deploy": "vercel --prod"
+  }
+}
