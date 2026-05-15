@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Setlog Real</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <a class="brand" href="./">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>
+            <strong>Setlog Real</strong>
+            <small>残る、グループのいま</small>
+          </span>
+        </a>
+        <div class="top-actions">
+          <button class="icon-button" id="copyLinkButton" type="button" aria-label="招待リンクをコピー" title="招待リンクをコピー">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <aside class="sidebar">
+          <section class="panel group-panel">
+            <div>
+              <p class="eyebrow">Group</p>
+              <h1 id="groupTitle">TEDxKeioU 2026</h1>
+            </div>
+            <label class="field">
+              <span>あなたの名前</span>
+              <input id="displayNameInput" type="text" maxlength="24" autocomplete="name" />
+            </label>
+            <div class="invite-box">
+              <span id="inviteUrl"></span>
+              <button id="copyLinkInlineButton" type="button">コピー</button>
+            </div>
+          </section>
+
+          <section class="panel stats-panel">
+            <div>
+              <strong id="postCount">0</strong>
+              <span>投稿</span>
+            </div>
+            <div>
+              <strong id="memberCount">1</strong>
+              <span>メンバー</span>
+            </div>
+            <div>
+              <strong>永久</strong>
+              <span>保存</span>
+            </div>
+          </section>
+        </aside>
+
+        <section class="composer" aria-label="投稿作成">
+          <div class="camera-frame">
+            <video id="cameraPreview" playsinline muted></video>
+            <video id="videoPreview" playsinline controls></video>
+            <img id="capturePreview" alt="" />
+            <div class="empty-camera" id="emptyCamera">
+              <span>写真・動画をここに残す</span>
+            </div>
+            <div class="camera-rail" aria-hidden="true">
+              <span>TEDxKeioU 2026</span>
+              <strong id="modeRail">Video</strong>
+            </div>
+            <div class="camera-controls">
+              <label class="zoom-control" id="zoomControl">
+                <span>Zoom</span>
+                <input id="zoomInput" type="range" min="1" max="1" step="0.1" value="1" />
+              </label>
+              <button class="capture-button" id="captureButton" type="button">録画開始</button>
+            </div>
+          </div>
+
+          <div class="capture-toolbar">
+            <div class="segmented" role="group" aria-label="撮影モード">
+              <button id="photoModeButton" type="button">Photo</button>
+              <button class="is-active" id="videoModeButton" type="button">Video</button>
+            </div>
+            <button class="tool-button" id="startCameraButton" type="button">カメラ</button>
+            <label class="tool-button file-pick">
+              読み込む
+              <input id="fileInput" type="file" accept="image/*,video/*" />
+            </label>
+          </div>
+
+          <label class="caption-field">
+            <span>キャプション</span>
+            <textarea id="captionInput" maxlength="180" rows="3" placeholder="いまのことを少しだけ"></textarea>
+          </label>
+
+          <div class="publish-row">
+            <p id="composerStatus" aria-live="polite"></p>
+            <button id="publishButton" type="button" disabled>投稿する</button>
+          </div>
+        </section>
+
+        <section class="feed-section" aria-label="投稿一覧">
+          <div class="feed-header">
+            <div>
+              <p class="eyebrow">Archive</p>
+              <h2>消えないタイムライン</h2>
+            </div>
+            <button id="clearSampleButton" type="button">サンプルを消す</button>
+          </div>
+          <div class="feed" id="feed"></div>
+        </section>
+      </main>
+    </div>
+
+    <template id="postTemplate">
+      <article class="post-card">
+        <div class="post-media"></div>
+        <div class="post-body">
+          <div class="post-meta">
+            <strong class="post-author"></strong>
+            <time></time>
+            <button class="save-post-button" type="button">保存</button>
+          </div>
+          <p class="post-caption"></p>
+        </div>
+      </article>
+    </template>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
